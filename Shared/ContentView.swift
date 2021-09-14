@@ -10,13 +10,20 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        ZStack {
-            LinearGradient(colors: [.cyan, .indigo], startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
-
-            PlaceholderCarouselView(placeholderWords: PlaceholderData.placeholderWords)
+        VStack {
+//            AnimatedTextField()
+            AnimatedTextField(icon: Image(systemName: "magnifyingglass"))
                 .padding(.horizontal)
+                .padding(.vertical, 100)
+            Spacer()
         }
+        .background(
+            LinearGradient(
+                colors: [.cyan, .indigo],
+                startPoint: .top,
+                endPoint: .bottom
+            ).ignoresSafeArea()
+        )
     }
 }
 

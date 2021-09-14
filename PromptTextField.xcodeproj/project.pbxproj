@@ -21,6 +21,8 @@
 		37BD3EC126F079D500086587 /* PlaceholderCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BD3EBF26F079D500086587 /* PlaceholderCarouselView.swift */; };
 		37BD3EC326F07B8900086587 /* PlaceholderWordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BD3EC226F07B8900086587 /* PlaceholderWordData.swift */; };
 		37BD3EC426F07B8900086587 /* PlaceholderWordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BD3EC226F07B8900086587 /* PlaceholderWordData.swift */; };
+		37BD3EC626F0875800086587 /* AnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BD3EC526F0875800086587 /* AnimatedTextField.swift */; };
+		37BD3EC726F0875800086587 /* AnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BD3EC526F0875800086587 /* AnimatedTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,7 @@
 		37BD3EA926F0771400086587 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		37BD3EBF26F079D500086587 /* PlaceholderCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderCarouselView.swift; sourceTree = "<group>"; };
 		37BD3EC226F07B8900086587 /* PlaceholderWordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderWordData.swift; sourceTree = "<group>"; };
+		37BD3EC526F0875800086587 /* AnimatedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				37BD3E8626F0771000086587 /* ContentView.swift */,
+				37BD3EC526F0875800086587 /* AnimatedTextField.swift */,
 				37BD3EBF26F079D500086587 /* PlaceholderCarouselView.swift */,
 				37BD3EC226F07B8900086587 /* PlaceholderWordData.swift */,
 				37BD3E8726F0771400086587 /* Assets.xcassets */,
@@ -301,6 +305,7 @@
 				37BD3EC326F07B8900086587 /* PlaceholderWordData.swift in Sources */,
 				37BD3EAD26F0771400086587 /* ContentView.swift in Sources */,
 				37BD3EAB26F0771400086587 /* PromptTextFieldApp.swift in Sources */,
+				37BD3EC626F0875800086587 /* AnimatedTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +317,7 @@
 				37BD3EC426F07B8900086587 /* PlaceholderWordData.swift in Sources */,
 				37BD3EAE26F0771400086587 /* ContentView.swift in Sources */,
 				37BD3EAC26F0771400086587 /* PromptTextFieldApp.swift in Sources */,
+				37BD3EC726F0875800086587 /* AnimatedTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

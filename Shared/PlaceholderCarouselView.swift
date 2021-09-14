@@ -9,18 +9,30 @@ import SwiftUI
 
 struct PlaceholderCarouselView: View {
 
-    let placeholderWords: [String]
+    // MARK: - Properties & State
+
+    let placeholders: [String]
 
     @State private var currentIndex: Int = 0
-    let timer = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
+    private let timer = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
 
+
+    // MARK: - Init
+
+    init(placeholders: [String]) {
+        self.placeholders = placeholders
+        currentIndex = randomStartIndex
+    }
+
+
+    // MARK: - Body
 
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
             Text("Search")
 
             ForEach(placeholderTuples, id: \.0) { (index, word) in
-                if currentIndex % placeholderWords.count == index {
+                if currentIndex % placeholders.count == index {
                     Text(word.quotedWord())
                         .transition(textTransition)
                 }
@@ -30,17 +42,17 @@ struct PlaceholderCarouselView: View {
         }
         .foregroundColor(.secondary)
         .tint(.secondary)
-        .padding()
+        .onAppear { currentIndex = randomStartIndex }
         .onReceive(timer) { _ in
             withAnimation { updateCurrentIndex() }
         }
-        .background(.regularMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 16.0, style: .continuous))
     }
 
 
+    // MARK: - Helper Methods
+
     var placeholderTuples: [(Int, String)] {
-        Array(zip(placeholderWords.indices, placeholderWords))
+        Array(zip(placeholders.indices, placeholders))
     }
 
     var textTransition: AnyTransition {
@@ -48,8 +60,12 @@ struct PlaceholderCarouselView: View {
                                  removal: .move(edge: .top).combined(with: .opacity))
     }
 
+    var randomStartIndex: Int {
+        Int.random(in: 0...placeholders.count)
+    }
+
     func updateCurrentIndex() {
-        if currentIndex == placeholderWords.count - 1 {
+        if currentIndex == placeholders.count - 1 {
             currentIndex = 0
         } else {
             currentIndex += 1
@@ -58,14 +74,18 @@ struct PlaceholderCarouselView: View {
 }
 
 
+// MARK: - Preview
+
 struct PlaceholderCarouselView_Previews: PreviewProvider {
     static var previews: some View {
 
-        PlaceholderCarouselView(placeholderWords: PlaceholderData.placeholderWords)
+        PlaceholderCarouselView(placeholders: PlaceholderData.placeholderWords)
             .preferredColorScheme(.dark)
     }
 }
 
+
+// MARK: - Extensions
 
 fileprivate extension String {
     func quotedWord() -> Self { "\"\(self)\"" }
