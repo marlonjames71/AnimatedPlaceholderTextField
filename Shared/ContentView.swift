@@ -15,6 +15,7 @@ struct ContentView: View {
                 .ignoresSafeArea()
 
             PlaceholderCarouselView(placeholderWords: PlaceholderData.placeholderWords)
+                .padding(.horizontal)
         }
     }
 }

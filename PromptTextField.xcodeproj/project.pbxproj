@@ -101,11 +101,11 @@
 		37BD3E8426F0771000086587 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				37BD3E8526F0771000086587 /* PromptTextFieldApp.swift */,
 				37BD3E8626F0771000086587 /* ContentView.swift */,
-				37BD3E8726F0771400086587 /* Assets.xcassets */,
 				37BD3EBF26F079D500086587 /* PlaceholderCarouselView.swift */,
 				37BD3EC226F07B8900086587 /* PlaceholderWordData.swift */,
+				37BD3E8726F0771400086587 /* Assets.xcassets */,
+				37BD3E8526F0771000086587 /* PromptTextFieldApp.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";

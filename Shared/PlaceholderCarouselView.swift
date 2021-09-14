@@ -11,10 +11,7 @@ struct PlaceholderCarouselView: View {
 
     let placeholderWords: [String]
 
-    @State private var degrees = 0.0
     @State private var currentIndex: Int = 0
-    @State private var showPlaceholderAtEvenIndex: Bool = true
-
     let timer = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
 
 
@@ -22,12 +19,12 @@ struct PlaceholderCarouselView: View {
         HStack(alignment: .center, spacing: 10) {
             Text("Search")
 
-            Group {
-                if placeholderIsAtEvenIndex { Text(placeholderText) }
-                if !placeholderIsAtEvenIndex { Text(placeholderText) }
+            ForEach(placeholderTuples, id: \.0) { (index, word) in
+                if currentIndex % placeholderWords.count == index {
+                    Text(word.quotedWord())
+                        .transition(textTransition)
+                }
             }
-            .transition(.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity),
-                                    removal: .move(edge: .top).combined(with: .opacity)))
 
             Spacer()
         }
@@ -35,43 +32,20 @@ struct PlaceholderCarouselView: View {
         .tint(.secondary)
         .padding()
         .onReceive(timer) { _ in
-            withAnimation {
-                updateCurrentIndex()
-                showPlaceholderAtEvenIndex.toggle()
-            }
+            withAnimation { updateCurrentIndex() }
         }
         .background(.regularMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 16.0, style: .continuous))
-        .padding(.horizontal)
     }
 
 
-    var placeholderText: String {
-        let placeholderText: String
-        switch placeholderIsAtEvenIndex {
-        case true:
-            placeholderText = showPlaceholderAtEvenIndex ? placeholder() : previousPlaceholder()
-        case false:
-            placeholderText = showPlaceholderAtEvenIndex ? previousPlaceholder() : placeholder()
-        }
-
-        return placeholderText.quotedWord()
+    var placeholderTuples: [(Int, String)] {
+        Array(zip(placeholderWords.indices, placeholderWords))
     }
 
-    func placeholder() -> String {
-        placeholderWords[currentIndex]
-    }
-
-    func previousPlaceholder() -> String {
-        if currentIndex == 0 {
-            return placeholderWords.last ?? ""
-        } else {
-            return placeholderWords[currentIndex - 1]
-        }
-    }
-
-    var placeholderIsAtEvenIndex: Bool {
-        currentIndex.isMultiple(of: 2)
+    var textTransition: AnyTransition {
+        AnyTransition.asymmetric(insertion: .move(edge: .bottom).combined(with: .opacity),
+                                 removal: .move(edge: .top).combined(with: .opacity))
     }
 
     func updateCurrentIndex() {
